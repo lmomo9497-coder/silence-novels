@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --reading-font-size: 20px;
+  --reading-line-height: 2;
+  --reading-font: 'Amiri', 'Noto Naskh Arabic', Georgia, serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-parchment-100 text-ink-900 antialiased;
+    font-family: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  .dark body {
+    @apply bg-ink-950 text-ink-100;
+  }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    @apply bg-gold-300/50;
+  }
+  /* شريط تمرير أنيق */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-300/50 rounded-full;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-ink-700;
+  }
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium
+      transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400
+      disabled:opacity-50 disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary {
+    @apply btn bg-ink-900 text-parchment-50 hover:bg-ink-800 active:scale-[0.98]
+      dark:bg-gold-500 dark:text-ink-950 dark:hover:bg-gold-400;
+  }
+  .btn-gold {
+    @apply btn bg-gold-500 text-ink-950 hover:bg-gold-400 active:scale-[0.98];
+  }
+  .btn-outline {
+    @apply btn border border-ink-200 bg-white/60 text-ink-800 hover:bg-ink-50
+      dark:border-ink-700 dark:bg-ink-900/40 dark:text-ink-100 dark:hover:bg-ink-800;
+  }
+  .btn-ghost {
+    @apply btn text-ink-600 hover:bg-ink-100 dark:text-ink-300 dark:hover:bg-ink-800;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-500;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs rounded-lg;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900
+      placeholder:text-ink-400 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400/30
+      dark:border-ink-700 dark:bg-ink-900 dark:text-ink-100 dark:placeholder:text-ink-500;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-700 dark:text-ink-300;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-100 bg-white shadow-soft dark:border-ink-800 dark:bg-ink-900;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-ink-200 bg-white/70 px-3 py-1
+      text-xs font-medium text-ink-600 dark:border-ink-700 dark:bg-ink-800/60 dark:text-ink-300;
+  }
+  .chip-active {
+    @apply border-gold-400 bg-gold-100 text-gold-800 dark:border-gold-500 dark:bg-gold-500/20 dark:text-gold-300;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-ink-100 dark:bg-ink-800;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  }
+  .dark .skeleton::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  }
+}
+
+/* ============ محتوى الفصل (Blocks) ============ */
+.block-content {
+  font-family: var(--reading-font);
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
+  @apply text-ink-800 dark:text-ink-100;
+}
+.block-content p {
+  margin: 0 0 1.1em;
+}
+.block-content h1,
+.block-content h2,
+.block-content h3 {
+  font-family: 'Reem Kufi', 'IBM Plex Sans Arabic', sans-serif;
+  @apply font-semibold text-ink-900 dark:text-parchment-100;
+  line-height: 1.4;
+  margin: 1.4em 0 0.7em;
+}
+.block-content h1 { font-size: 1.7em; }
+.block-content h2 { font-size: 1.4em; }
+.block-content h3 { font-size: 1.2em; }
+.block-content blockquote {
+  @apply border-e-4 border-gold-400 bg-gold-50/60 dark:bg-gold-500/10;
+  margin: 1.2em 0;
+  padding: 0.8em 1.2em;
+  border-radius: 0.5rem;
+  font-style: italic;
+}
+.block-content ul,
+.block-content ol {
+  margin: 0.8em 0;
+  padding-inline-start: 1.6em;
+}
+.block-content ul { list-style: disc; }
+.block-content ol { list-style: decimal; }
+.block-content a {
+  @apply text-gold-700 dark:text-gold-400 underline;
+}
+.block-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+.block-content hr {
+  @apply border-ink-200 dark:border-ink-700;
+  margin: 1.6em 0;
+}
+
+/* محرر TipTap */
+.tiptap {
+  outline: none;
+  min-height: 3rem;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  @apply text-ink-400 dark:text-ink-500 float-right pointer-events-none h-0;
+}
+.tiptap:focus {
+  outline: none;
+}
+
+/* منع خروج المحتوى عن الشاشة */
+img,
+video,
+audio {
+  max-width: 100%;
+}
+.break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* إخفاء شريط التمرير الأفقي للشرائح */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media print {
+  .no-print { display: none !important; }
+}

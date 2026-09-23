@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#171b28" />
+    <meta name="description" content="روايات صمت — منصة احترافية لقراءة ونشر الروايات. اقرأ روايات غنية بالنصوص والصور والأصوات، أو انشر روايتك الخاصة." />
+    <meta name="keywords" content="روايات, روايات صمت, قراءة, نشر روايات, Silence Novels" />
+    <meta property="og:title" content="روايات صمت — Silence Novels" />
+    <meta property="og:description" content="منصة احترافية لقراءة ونشر الروايات." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Reem+Kufi:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>روايات صمت — Silence Novels</title>
+    <script>
+      // احسب جذر التطبيق (يدعم النشر تحت مسار فرعي) ثم استعد المسار المحفوظ من 404.html
+      (function () {
+        try {
+          var p = location.pathname;
+          var base = p.replace(/index\.html$/, '');
+          window.__SN_BASE__ = base || '/';
+          var r = sessionStorage.getItem('sn_redirect');
+          if (r) {
+            sessionStorage.removeItem('sn_redirect');
+            history.replaceState(null, '', r);
+          }
+        } catch (e) {
+          window.__SN_BASE__ = '/';
+        }
+      })();
+    </script>
+  <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
